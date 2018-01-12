@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Последняя компиляция и сжатый CSS -->
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/sign.css'%}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Дополнение к теме -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Последняя компиляция и сжатый JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+
+ <body>
+<nav class="navbar navbar-default">
+	<div class="container">
+		<div class="navbar-header">
+			<a href="#" class="navbar-brand">{% block title %}{% endblock %}</a>
+		</div>
+
+        <div>
+             <ul class="nav navbar-nav navbar-right">
+            {% if user.username %}
+                <li><a href="/auth/logout/">Выйти ({{ user.username }}) </a></li>
+            {% else %}
+                <li><a href="/auth/login/">Войти</a></li>
+            {% endif %}
+            </ul>
+        </div>
+
+	</div>
+</nav>
+
+
+{% block body %}
+{% endblock %}
+
+{% block login %}
+{% endblock %}
+
+
+

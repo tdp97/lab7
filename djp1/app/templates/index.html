@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if user.username %}
+<h1>
+    <center>Создаем обьекты предметной области</center>
+</h1>
+<div>
+    <center>
+    <form class="form-signin" action="" method='post'>
+        {% csrf_token %}
+
+        <label><center>Name</center></label>
+        <div>{{form.name}}</div>
+        <label><center>Description</center></label>
+       <div>{{form.description}}</div>
+
+        <button type="submit">Oтправить</button>
+
+    </form>
+    </center>
+</div>
+{% endif %}
+<h1>
+    <center>Список объектов</center>
+</h1>
+<div class="container">
+    <div class="row">
+        <div сlass="col-md-6 col-md-offset-2">
+            <div class="panel panel-default">
+                <table class="table"><thead><tr><th>№</th>
+                    <th>Object</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                                    </thead>
+                    <tbody>
+                    {% for publisher in b %}
+                   <!-- <li class="list-group-item"><center>{{ publisher.name }}</center></li> -->
+                    </tr><th scope="row">#</th>
+                        <td>{{ publisher }}</td>
+                        <td>{{ publisher.name }}</td>
+                        <td>{{ publisher.description }}</td>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
